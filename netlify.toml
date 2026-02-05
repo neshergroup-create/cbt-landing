@@ -1,0 +1,10 @@
+# Netlify config for CBT landing page (static site)
+[build]
+  publish = "."
+  command = ""
+
+# Optional: redirects or headers can be added below
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
