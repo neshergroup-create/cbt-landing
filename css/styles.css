@@ -116,15 +116,20 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .profile-name-overlay {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  bottom: 4px;
+  right: 8%;
+  left: 8%;
   background: rgba(0,0,0,0.6);
   color: var(--white);
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
+  padding: 0.6rem 0.75rem 0.7rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: center;
+  min-height: 2.5em;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .profile-name {
   margin: 0 0 0.25rem;
