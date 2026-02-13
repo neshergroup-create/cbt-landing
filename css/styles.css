@@ -463,6 +463,5 @@ img { max-width: 100%; height: auto; display: block; }
   .profile-column { position: static; }
   .profile-photo-wrap { width: 240px; height: 240px; margin-inline: auto; }
   .profile-actions { justify-content: center; }
-  .form-column { order: -1; }
   .nav-bar .nav-page-btn { font-size: 0.85rem; }
 }
