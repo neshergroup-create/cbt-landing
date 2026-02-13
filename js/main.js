@@ -18,10 +18,22 @@
     });
   });
 
-  // Nav bar "ניווט בעמוד" scrolls to profile
+  // Nav bar "ניווט בעמוד" scrolls to about section
   var navBtn = document.querySelector('.nav-page-btn');
   if (navBtn) {
-    navBtn.addEventListener('click', function () { smoothScrollTo('profile'); });
+    navBtn.addEventListener('click', function () { smoothScrollTo('about-full'); });
+  }
+
+  // "קראו עוד עלי" – show/hide full text
+  var readMoreBtn = document.getElementById('read-more-btn');
+  var readMoreContent = document.getElementById('read-more-content');
+  if (readMoreBtn && readMoreContent) {
+    readMoreBtn.addEventListener('click', function () {
+      var isHidden = readMoreContent.hidden;
+      readMoreContent.hidden = !isHidden;
+      readMoreBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      readMoreBtn.textContent = isHidden ? 'הצג פחות' : 'קראו עוד עלי...';
+    });
   }
 
   // Contact form: open mailto with subject and body
