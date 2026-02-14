@@ -1,5 +1,37 @@
 # Deploy CBT Landing to GitHub + Netlify
 
+## עדכון האתר (Deploy אחרי שינויים)
+
+**מתי משתמשים:** האתר כבר על GitHub ו-Netlify, ורוצים רק לעדכן את מה ששינית בפרויקט.
+
+**מה עושים:**
+
+1. פתח **PowerShell** (חפש "PowerShell" בתפריט התחל ב-Windows).
+
+2. העתק והדבק את הפקודות הבאות, **אחת אחרי השנייה**, ולחץ Enter אחרי כל אחת:
+   ```
+   cd c:\CursorProject\Ali\cbt-landing
+   ```
+   ```
+   git add .
+   ```
+   ```
+   git commit -m "Update site"
+   ```
+   ```
+   git push
+   ```
+
+3. אם GitHub מבקש התחברות – השתמש ב-Personal Access Token (לא בסיסמה הרגילה).  
+   ליצירת טוקן: GitHub → Settings → Developer settings → Personal access tokens.
+
+4. Netlify יעדכן את האתר אוטומטית תוך דקה–שתיים אחרי שה-`git push` הצליח.
+
+**אם מופיעה שגיאה על קובץ index.lock:**  
+מחק את הקובץ `c:\CursorProject\Ali\cbt-landing\.git\index.lock` (למשל דרך סייר הקבצים) ונסה שוב את הפקודות משלב 2.
+
+---
+
 ## 1. Install Git (if needed)
 
 - Download: https://git-scm.com/download/win  
