@@ -18,12 +18,6 @@
     });
   });
 
-  // Nav bar "ניווט בעמוד" scrolls to about section
-  var navBtn = document.querySelector('.nav-page-btn');
-  if (navBtn) {
-    navBtn.addEventListener('click', function () { smoothScrollTo('about-full'); });
-  }
-
   // Mobile hamburger: toggle nav
   var navToggle = document.getElementById('nav-toggle-btn');
   var mainNav = document.getElementById('main-nav');
