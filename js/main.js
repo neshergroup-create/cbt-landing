@@ -24,31 +24,52 @@
     navBtn.addEventListener('click', function () { smoothScrollTo('about-full'); });
   }
 
-  // "קראו עוד עלי" – show/hide full text
-  var readMoreBtn = document.getElementById('read-more-btn');
-  var readMoreContent = document.getElementById('read-more-content');
-  if (readMoreBtn && readMoreContent) {
-    readMoreBtn.addEventListener('click', function () {
-      var isHidden = readMoreContent.hidden;
-      readMoreContent.hidden = !isHidden;
-      readMoreBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-      readMoreBtn.textContent = isHidden ? 'הצג פחות' : 'קראו עוד עלי...';
+  // Mobile hamburger: toggle nav
+  var navToggle = document.getElementById('nav-toggle-btn');
+  var mainNav = document.getElementById('main-nav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      var open = mainNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mainNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
-  // Contact form: open mailto with subject and body
-  var form = document.querySelector('.contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = (form.querySelector('[name="name"]') || {}).value || '';
-      var phone = (form.querySelector('[name="phone"]') || {}).value || '';
-      var email = (form.querySelector('[name="email"]') || {}).value || '';
-      var body = (form.querySelector('[name="body"]') || {}).value || '';
-      var subject = 'פניה מהאתר - אורנית שטרנהיים מידאני';
-      var bodyText = 'שם: ' + name + '\nטלפון: ' + phone + '\nאימייל: ' + email + '\n\nתוכן הפניה:\n' + body;
-      var mailto = 'mailto:ornitsm@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
-      window.location.href = mailto;
+  // Escape: close hamburger menu or open FAQ panel (keyboard trap prevention)
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (mainNav && mainNav.classList.contains('is-open')) {
+      mainNav.classList.remove('is-open');
+      if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+      return;
+    }
+    var openFaq = document.querySelector('.faq-question[aria-expanded="true"]');
+    if (openFaq) {
+      var panel = document.getElementById(openFaq.getAttribute('aria-controls'));
+      if (panel) panel.hidden = true;
+      openFaq.setAttribute('aria-expanded', 'false');
+      openFaq.focus();
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!panel) return;
+      btn.setAttribute('aria-expanded', !expanded);
+      panel.hidden = expanded;
     });
-  }
+  });
+
+  // Contact form: submitted to Netlify Forms (no client-side handler needed)
 })();
