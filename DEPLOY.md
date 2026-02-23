@@ -97,3 +97,16 @@ git push
 ```
 
 Netlify will automatically redeploy when you push to `main`.
+
+---
+
+## If you see "Page not found" (404) on the thank-you page
+
+Netlify’s [support guide](https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125) says the most common cause is **wrong Publish directory**.
+
+1. In **Netlify**: open your site → **Site configuration** (or **Build & deploy** → **Build settings**).
+2. Set **Base directory** to empty (or to the folder that contains `index.html` if your repo has the site in a subfolder).
+3. Set **Publish directory** to **`.`** (a single dot) so Netlify publishes the same folder that contains `index.html`, `thank-you.html`, and the `thank-you/` folder.  
+   If it is set to something like `dist` or `build`, change it to **`.`** for this static site (there is no build step).
+4. Save and trigger **Deploy site** again (or push a small change to trigger a new deploy).
+5. In the latest deploy, use **Deploy file browser** (if available) to confirm that `thank-you.html` and `thank-you/index.html` appear in the published files.
