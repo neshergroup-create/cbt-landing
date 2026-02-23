@@ -65,40 +65,15 @@
     });
   });
 
-  // Contact form: submit via fetch (urlencoded for Netlify), show thank-you on same page
+  // After form submit, Netlify redirects to /#form-success; show thank-you message on same page
   var contactForm = document.getElementById('contact-form-form');
-  var successMessage = document.getElementById('form-success-message');
-  var submitBtn = document.getElementById('contact-submit-btn');
-  if (contactForm && successMessage && submitBtn) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'שולח...';
-      var formData = new FormData(contactForm);
-      var encoded = Array.from(formData.entries())
-        .map(function (p) { return encodeURIComponent(p[0]) + '=' + encodeURIComponent(p[1]); })
-        .join('&');
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encoded,
-        redirect: 'manual'
-      }).then(function (res) {
-        if (res.type === 'opaqueredirect' || res.status === 0 || res.status === 200 || res.status === 302) {
-          contactForm.hidden = true;
-          successMessage.hidden = false;
-          successMessage.setAttribute('tabindex', '-1');
-          successMessage.focus();
-        } else {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span class="btn-icon" aria-hidden="true">✈</span> שלח הודעה';
-          alert('שגיאה בשליחה. נא לנסות שוב או ליצור קשר בטלפון.');
-        }
-      }).catch(function () {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span class="btn-icon" aria-hidden="true">✈</span> שלח הודעה';
-        alert('שגיאה בשליחה. נא לנסות שוב או ליצור קשר בטלפון.');
-      });
-    });
+  var successMessage = document.getElementById('form-success');
+  function showSuccessIfHash() {
+    if (window.location.hash === '#form-success' && contactForm && successMessage) {
+      contactForm.hidden = true;
+      successMessage.hidden = false;
+    }
   }
+  showSuccessIfHash();
+  window.addEventListener('hashchange', showSuccessIfHash);
 })();
