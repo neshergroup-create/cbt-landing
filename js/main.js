@@ -65,7 +65,7 @@
     });
   });
 
-  // Contact form: submit via fetch, show thank-you on same page (avoids redirect 404)
+  // Contact form: submit via fetch (urlencoded for Netlify), show thank-you on same page
   var contactForm = document.getElementById('contact-form-form');
   var successMessage = document.getElementById('form-success-message');
   var submitBtn = document.getElementById('contact-submit-btn');
@@ -74,9 +74,14 @@
       e.preventDefault();
       submitBtn.disabled = true;
       submitBtn.textContent = 'שולח...';
-      fetch(window.location.href, {
+      var formData = new FormData(contactForm);
+      var encoded = Array.from(formData.entries())
+        .map(function (p) { return encodeURIComponent(p[0]) + '=' + encodeURIComponent(p[1]); })
+        .join('&');
+      fetch('/', {
         method: 'POST',
-        body: new FormData(contactForm),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded,
         redirect: 'manual'
       }).then(function (res) {
         if (res.type === 'opaqueredirect' || res.status === 0 || res.status === 200 || res.status === 302) {
