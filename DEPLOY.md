@@ -132,5 +132,5 @@ Netlify’s [support guide](https://answers.netlify.com/t/support-guide-i-ve-dep
 
 ### 4. If the homepage works but thank-you still 404s
 
-- Clear browser cache or try an incognito window, then open **https://ornit.netlify.app/thank-you/** again.
+- **Try first:** Open **https://ornit.netlify.app/thank-you.html** in a **private/incognito** window (or clear cache). The thank-you page is deployed; a cached 404 is common.
 - In Netlify, go to **Site configuration** → **Build** and ensure **Build command** is empty (no build step for this static site).
