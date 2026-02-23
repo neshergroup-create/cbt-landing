@@ -65,5 +65,35 @@
     });
   });
 
-  // Contact form: submitted to Netlify Forms (no client-side handler needed)
+  // Contact form: submit via fetch, show thank-you on same page (avoids redirect 404)
+  var contactForm = document.getElementById('contact-form-form');
+  var successMessage = document.getElementById('form-success-message');
+  var submitBtn = document.getElementById('contact-submit-btn');
+  if (contactForm && successMessage && submitBtn) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'שולח...';
+      fetch(window.location.href, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        redirect: 'manual'
+      }).then(function (res) {
+        if (res.type === 'opaqueredirect' || res.status === 0 || res.status === 200 || res.status === 302) {
+          contactForm.hidden = true;
+          successMessage.hidden = false;
+          successMessage.setAttribute('tabindex', '-1');
+          successMessage.focus();
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="btn-icon" aria-hidden="true">✈</span> שלח הודעה';
+          alert('שגיאה בשליחה. נא לנסות שוב או ליצור קשר בטלפון.');
+        }
+      }).catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="btn-icon" aria-hidden="true">✈</span> שלח הודעה';
+        alert('שגיאה בשליחה. נא לנסות שוב או ליצור קשר בטלפון.');
+      });
+    });
+  }
 })();

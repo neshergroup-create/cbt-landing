@@ -191,7 +191,7 @@
       <section class="form-column" id="contact-form">
         <h2 class="form-title">פניה אל אורנית שטרנהיים</h2>
         <p class="form-required-note">נא למלא את כל הפרטים.</p>
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="https://ornit.netlify.app/thank-you.html" data-netlify-honeypot="bot-field">
+        <form class="contact-form" id="contact-form-form" name="contact" method="POST" data-netlify="true" action="#" data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <p class="form-honeypot" hidden aria-hidden="true">
             <label for="bot-field">אל תמלאו</label>
@@ -214,11 +214,15 @@
             <textarea id="fmsg" name="body" rows="5" required></textarea>
           </div>
           <p class="form-privacy">הפרטים נשמרים בסודיות ולא יועברו לצד שלישי.</p>
-          <button type="submit" class="btn btn-submit">
+          <button type="submit" class="btn btn-submit" id="contact-submit-btn">
             <span class="btn-icon" aria-hidden="true">✈</span>
             שלח הודעה
           </button>
         </form>
+        <div id="form-success-message" class="form-success-message" hidden aria-live="polite">
+          <h2 class="form-success-title">הפניה נשלחה בהצלחה</h2>
+          <p class="form-success-text">תודה שפניתם. אורנית תחזור אליכם בהקדם, בדרך כלל בתוך 24 שעות.</p>
+        </div>
       </section>
     </div>
   </main>
