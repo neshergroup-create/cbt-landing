@@ -65,15 +65,59 @@
     });
   });
 
-  // After form submit, Netlify redirects to /#form-success; show thank-you message on same page
+  // Contact form: submit via Google Apps Script (replace with your deployed script URL)
+  var CONTACT_FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9V17_HTiGVYRwEwqZIaxUl90rCZZ_IYsFzAB9CbOZupaX2aubozpJXpIS13uTuGhN8g/exec';
   var contactForm = document.getElementById('contact-form-form');
   var successMessage = document.getElementById('form-success');
+  var formError = document.getElementById('form-error');
+  var submitBtn = document.getElementById('contact-submit-btn');
+
   function showSuccessIfHash() {
     if (window.location.hash === '#form-success' && contactForm && successMessage) {
       contactForm.hidden = true;
       successMessage.hidden = false;
+      if (formError) formError.hidden = true;
     }
   }
   showSuccessIfHash();
   window.addEventListener('hashchange', showSuccessIfHash);
+
+  if (contactForm && submitBtn) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (formError) {
+        formError.hidden = true;
+        formError.textContent = '';
+      }
+      var botField = document.getElementById('bot-field');
+      if (botField && botField.value.trim() !== '') {
+        if (formError) {
+          formError.textContent = 'לא ניתן לשלוח את הטופס. נא לנסות שוב.';
+          formError.hidden = false;
+        }
+        return;
+      }
+      var fd = new FormData(contactForm);
+      var body = new URLSearchParams(fd);
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      fetch(CONTACT_FORM_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }).then(function () {
+        window.location.hash = 'form-success';
+        showSuccessIfHash();
+      }).catch(function () {
+        if (formError) {
+          formError.textContent = 'שגיאה בשליחת הפניה. נא לבדוק את החיבור ולנסות שוב.';
+          formError.hidden = false;
+        }
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.setAttribute('aria-busy', 'false');
+      });
+    });
+  }
 })();

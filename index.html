@@ -191,12 +191,12 @@
       <section class="form-column" id="contact-form">
         <h2 class="form-title">פניה אל אורנית שטרנהיים</h2>
         <p class="form-required-note">נא למלא את כל הפרטים.</p>
-        <form class="contact-form" id="contact-form-form" name="contact" method="POST" data-netlify="true" action="/#form-success" data-netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact">
+        <form class="contact-form" id="contact-form-form" name="contact" method="POST" action="#">
           <p class="form-honeypot" hidden aria-hidden="true">
             <label for="bot-field">אל תמלאו</label>
             <input id="bot-field" name="bot-field" tabindex="-1" autocomplete="off">
           </p>
+          <p id="form-error" class="form-error-message" hidden aria-live="polite"></p>
           <div class="form-group">
             <label for="fname">שם</label>
             <input type="text" id="fname" name="name" required>
