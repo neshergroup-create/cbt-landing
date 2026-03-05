@@ -99,8 +99,11 @@
       }
       var fd = new FormData(contactForm);
       var body = new URLSearchParams(fd);
+      var originalBtnContent = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.classList.add('is-loading');
+      submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> שולח...';
       fetch(CONTACT_FORM_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -117,7 +120,32 @@
       }).finally(function () {
         submitBtn.disabled = false;
         submitBtn.setAttribute('aria-busy', 'false');
+        submitBtn.classList.remove('is-loading');
+        submitBtn.innerHTML = originalBtnContent;
       });
     });
+  }
+
+  // Sticky CTA on mobile: show after scrolling past hero
+  var stickyCta = document.getElementById('sticky-cta');
+  if (stickyCta) {
+    function onScrollSticky() {
+      var mq = window.matchMedia('(max-width: 768px)');
+      if (!mq.matches) {
+        stickyCta.hidden = true;
+        stickyCta.setAttribute('aria-hidden', 'true');
+        return;
+      }
+      if (window.scrollY > 320) {
+        stickyCta.hidden = false;
+        stickyCta.setAttribute('aria-hidden', 'false');
+      } else {
+        stickyCta.hidden = true;
+        stickyCta.setAttribute('aria-hidden', 'true');
+      }
+    }
+    window.addEventListener('scroll', onScrollSticky, { passive: true });
+    window.addEventListener('resize', onScrollSticky);
+    onScrollSticky();
   }
 })();

@@ -60,12 +60,20 @@
     </div>
   </header>
 
+  <div id="sticky-cta" class="sticky-cta" hidden aria-hidden="true">
+    <a href="#contact-form" class="sticky-cta-link">צרו קשר – שיחת היכרות ללא התחייבות</a>
+  </div>
+
   <main class="main-wrap">
     <section class="hero" id="hero">
       <div class="hero-inner">
         <div class="hero-content">
           <h1 class="hero-title">ליווי רגשי לילדים ונוער – עם כלים שמשאירים אתכם רגועים</h1>
           <p class="hero-subtitle">טיפול CBT ו-DBT מותאם גיל, בשיתוף ההורים. חרדות, ויסות רגשי, הכנה לגיוס ותמיכה במשפחה.</p>
+          <p class="hero-value">מטפלת CBT/DBT מוסמכת מהאזור – טיפול ממוקד, בשיתוף ההורים.</p>
+          <p class="hero-trust">מטפלת מוסמכת · שיחת היכרות ללא התחייבות · מחזירה לפניות בתוך 24 שעות</p>
+          <p class="hero-location">מקבלת בראשון לציון (נוח גם מרחובות ונס ציונה)</p>
+          <a href="#contact-form" class="btn-hero">לשיחת היכרות – צרו קשר</a>
         </div>
       </div>
     </section>
@@ -93,7 +101,7 @@
     </section>
 
     <section class="testimonials" id="testimonials">
-      <h2 class="testimonials-title">מה אומרים הורים</h2>
+      <h2 class="testimonials-title">מה אומרים הורים שפנו אלי</h2>
       <div class="testimonials-grid">
         <blockquote class="testimonial-card">
           <p class="testimonial-text">אורנית עזרה לילד שלנו להבין את החרדות ולתת להן כלים. אחרי כמה חודשים הוא הרבה יותר רגוע ויש לו אסטרטגיות ברורות.</p>
@@ -108,15 +116,22 @@
           <footer class="testimonial-author">הורים לנער מתבגר</footer>
         </blockquote>
       </div>
+      <p class="testimonials-share">המלצתם? שתפו עם הורים שצריכים – <a href="https://wa.me/?text=https%3A%2F%2Fornit.netlify.app%2F%20אורנית%20שטרנהיים%20-%20טיפול%20CBT%20לילדים%20ונוער" target="_blank" rel="noopener" class="testimonials-share-link">שלחו בוואטסאפ</a></p>
     </section>
 
     <section class="faq" id="faq">
       <h2 class="faq-title">שאלות נפוצות</h2>
       <div class="faq-list">
         <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-start" id="faq-qstart">איך מתחילים?</button>
+          <div class="faq-answer" id="faq-start" role="region" aria-labelledby="faq-qstart" hidden>
+            <p>פשוט צרו קשר – בטלפון, בוואטסאפ או דרך הטופס. נקבע שיחת היכרות קצרה (ללא התחייבות), נכיר את המצב ואת הצרכים, ונחליט יחד אם ואיך להמשיך. מוזמנים ליצור קשר לשיחת היכרות.</p>
+          </div>
+        </div>
+        <div class="faq-item">
           <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-q1">מה קורה במפגש ראשון?</button>
           <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q1" hidden>
-            <p>במפגש הראשון נפגשים בדרך כלל עם ההורים (או עם המתבגר/ת בלבד, בהתאם לגיל). נכיר את המצב, את הצרכים ואת המטרות, ואחליט יחד על המשך התהליך. שיחת ההיכרות נועדה להרגיש בטוחים ולבחור אם להתחיל טיפול.</p>
+            <p>במפגש הראשון נפגשים בדרך כלל עם ההורים (או עם המתבגר/ת בלבד, בהתאם לגיל). נכיר את המצב, את הצרכים ואת המטרות, ואחליט יחד על המשך התהליך. שיחת ההיכרות נועדה להרגיש בטוחים ולבחור אם להתחיל טיפול. מוזמנים ליצור קשר.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -173,6 +188,7 @@
             ווטסאפ
           </a>
         </div>
+        <p class="profile-response-time">מחזירה לפניות בתוך 24 שעות</p>
         <div class="profile-intro">
           <p>מטפלת מוסמכת ב-CBT עם התמחות בילדים ונוער. משלבת גישה מבוססת מחקר עם יחס חם ומותאם גיל – כלים לוויסות רגשי, התמודדות עם חרדה ולחץ, בשיתוף ההורים.</p>
         </div>
@@ -190,6 +206,7 @@
       <!-- Right: Contact form -->
       <section class="form-column" id="contact-form">
         <h2 class="form-title">פניה אל אורנית שטרנהיים</h2>
+        <p class="form-reassurance">שיחת היכרות קצרה – בלי התחייבות</p>
         <p class="form-required-note">נא למלא את כל הפרטים.</p>
         <form class="contact-form" id="contact-form-form" name="contact" method="POST" action="#">
           <p class="form-honeypot" hidden aria-hidden="true">
@@ -222,6 +239,7 @@
         <div id="form-success" class="form-success-message" hidden aria-live="polite">
           <h2 class="form-success-title">הפניה נשלחה בהצלחה</h2>
           <p class="form-success-text">תודה שפניתם. אורנית תחזור אליכם בהקדם, בדרך כלל בתוך 24 שעות.</p>
+          <p class="form-success-followup">אם לא שמעתם ממני תוך 24 שעות – צרו קשר שוב או <a href="https://wa.me/972524848151" target="_blank" rel="noopener">בוואטסאפ</a>.</p>
         </div>
       </section>
     </div>
@@ -233,8 +251,11 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-text">כל הזכויות שמורות. הטיפול מתנהל בסודיות מלאה ובהתאם לכללי האתיקה המקצועית.</p>
-      <a href="#contact-form" class="footer-link">יצירת קשר</a>
+      <p class="footer-text"><span class="footer-name">אורנית שטרנהיים</span> · כל הזכויות שמורות. הטיפול מתנהל בסודיות מלאה ובהתאם לכללי האתיקה המקצועית.</p>
+      <div class="footer-links">
+        <a href="#hero" class="footer-link">חזרה לראש העמוד</a>
+        <a href="#contact-form" class="footer-link">יצירת קשר</a>
+      </div>
     </div>
   </footer>
 
