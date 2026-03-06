@@ -37,6 +37,19 @@ This folder contains the script that receives contact form submissions from the 
 
 7. **Test:** Fill out the contact form on the site and submit. You should get an email and, if you set `SHEET_ID`, a new row in the sheet.
 
+## Security and limits
+
+The script includes:
+
+- **Honeypot** – Ignores submissions where the hidden `bot-field` is filled.
+- **Form-time** – Requires a timestamp (set by the site’s JavaScript) within the last 15 minutes; rejects old or non-JS submissions.
+- **Rate limiting** – Global limit of 10 submissions per hour (configurable via `RATE_LIMIT_MAX` and `RATE_LIMIT_WINDOW_MS`). Excess requests receive a generic error.
+- **Input sanitization** – Strips newline/null characters from name, email, and message to prevent header injection.
+- **Length limits** – Name 200, phone 30, email 254, message 5000 characters. Email format is validated.
+- **Generic errors** – All client errors (4xx) return the same message so the script doesn’t leak validation details.
+
+The site form sends a hidden `form-time` field (set at submit time). Ensure the form in `index.html` includes `<input type="hidden" name="form-time" id="form-time">` and that `main.js` sets its value before submit.
+
 ## Updating the script
 
 After you change the code in the script editor:

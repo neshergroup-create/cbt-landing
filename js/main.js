@@ -97,6 +97,8 @@
         }
         return;
       }
+      var formTimeInput = document.getElementById('form-time');
+      if (formTimeInput) formTimeInput.value = Math.floor(Date.now() / 1000);
       var fd = new FormData(contactForm);
       var body = new URLSearchParams(fd);
       var originalBtnContent = submitBtn.innerHTML;
