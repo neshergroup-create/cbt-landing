@@ -1,5 +1,7 @@
 # Deploy CBT Landing to GitHub + Netlify
 
+**Secrets:** If you use the Google Apps Script contact form, configure `RECIPIENT_EMAIL` and `SHEET_ID` only in script.google.com — never commit real values. See [google-apps-script/README.md](google-apps-script/README.md) for details.
+
 ## עדכון האתר (Deploy אחרי שינויים)
 
 **מתי משתמשים:** האתר כבר על GitHub ו-Netlify, ורוצים רק לעדכן את מה ששינית בפרויקט.

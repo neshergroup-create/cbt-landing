@@ -2,6 +2,10 @@
 
 This folder contains the script that receives contact form submissions from the CBT landing page and sends them by email (and optionally logs to a Google Sheet).
 
+## Secrets (do not commit)
+
+`RECIPIENT_EMAIL` and `SHEET_ID` must **never** be committed to the repo with real values. The repo contains placeholders only. Configure the real email and Sheet ID **only** in script.google.com (in the script editor or, optionally, via **Project settings** → **Script properties**). This keeps secrets out of version control and avoids exposing them if the repo is public.
+
 ## Steps
 
 1. **Open [script.google.com](https://script.google.com)** and sign in with your Google account.
@@ -10,7 +14,7 @@ This folder contains the script that receives contact form submissions from the 
 
 3. **Paste the contents of `ContactForm.gs`** into the editor.
 
-4. **Edit the config at the top of the script:**
+4. **Edit the config at the top of the script** (in the GAS editor only):
    - `RECIPIENT_EMAIL` – the Gmail address that should receive each submission (e.g. Ornit’s email).
    - `SHEET_ID` – optional. To log submissions to a spreadsheet:
      - Create a new Google Sheet.

@@ -8,8 +8,9 @@
  * 5. Copy the deployment URL ( .../exec ) into cbt-landing/js/main.js as CONTACT_FORM_SCRIPT_URL.
  */
 
-var RECIPIENT_EMAIL = 'yuval_forish@yahoo.com'; // Change to the email that should receive form submissions
-var SHEET_ID = '16NB0jdtdXPoaHJIdNXAjfWGU0PnHmHvaGgwAo29l8xA'; // Optional: Google Sheet ID from the URL (e.g. https://docs.google.com/spreadsheets/d/SHEET_ID/edit). Leave '' to skip logging to sheet.
+// Set these in script.google.com only — do not commit real values to the repo.
+var RECIPIENT_EMAIL = ''; // Email that should receive form submissions (set in GAS project).
+var SHEET_ID = ''; // Optional: Google Sheet ID from the URL (e.g. https://docs.google.com/spreadsheets/d/SHEET_ID/edit). Leave '' to skip logging to sheet.
 
 var MAX_NAME = 200;
 var MAX_PHONE = 30;
