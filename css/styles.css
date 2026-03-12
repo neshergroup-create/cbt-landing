@@ -2,9 +2,9 @@
 :root {
   --text: #1a1a1a;
   --text-muted: #555;
-  --blue: #0d9488;
-  --blue-hover: #0f766e;
-  --blue-text: #0b6b62;
+  --blue: #0b6b62;
+  --blue-hover: #095954;
+  --blue-text: #0a5c54;
   --border: #e5e7eb;
   --shadow: 0 4px 14px rgba(0,0,0,.08);
   --radius: 8px;
@@ -15,6 +15,14 @@
 *,
 *::before,
 *::after { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 body {
   margin: 0;
@@ -818,9 +826,9 @@ button:focus-visible {
 .form-group input:focus-visible,
 .form-group textarea:focus,
 .form-group textarea:focus-visible {
-  outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 .form-privacy {
@@ -828,6 +836,15 @@ button:focus-visible {
   font-size: 0.85rem;
   color: var(--text-muted);
   text-align: right;
+}
+
+.form-privacy-link {
+  color: var(--blue-text);
+  font-weight: 500;
+}
+
+.form-privacy-link:hover {
+  text-decoration: underline;
 }
 
 .form-error-message {
@@ -909,6 +926,18 @@ button:focus-visible {
     padding-bottom: 4.5rem;
   }
 }
+
+/* Accessibility statement page */
+.accessibility-page { padding-bottom: 3rem; }
+.accessibility-content { max-width: 720px; margin: 0 auto; }
+.accessibility-title { font-size: 1.75rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--text); text-align: right; }
+.accessibility-updated { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 2rem; text-align: right; }
+.accessibility-h2 { font-size: 1.2rem; font-weight: 600; margin: 1.75rem 0 0.5rem; color: var(--text); text-align: right; }
+.accessibility-content p { margin: 0 0 1rem; text-align: right; line-height: 1.65; }
+.accessibility-list { margin: 0 0 1rem; padding-right: 1.5rem; text-align: right; line-height: 1.65; }
+.accessibility-list li { margin-bottom: 0.5rem; }
+.accessibility-contact { margin: 1rem 0 !important; }
+.accessibility-back { margin-top: 2rem !important; }
 
 /* Footer */
 .site-footer {

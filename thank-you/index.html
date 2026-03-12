@@ -22,13 +22,24 @@
     .thank-you-text { color: var(--text-muted, #555); margin-bottom: 1.5rem; line-height: 1.6; }
     .thank-you-link { display: inline-block; padding: 0.6rem 1.25rem; background: var(--blue, #2563eb); color: #fff; border-radius: 8px; font-weight: 500; margin-top: 0.5rem; }
     .thank-you-link:hover { opacity: 0.9; }
+    .thank-you-footer .footer-inner { justify-content: center; }
   </style>
 </head>
 <body>
-  <main class="thank-you-wrap">
+  <a href="#main-content" class="skip-link">דלג לתוכן</a>
+  <main id="main-content" class="thank-you-wrap">
     <h1 class="thank-you-title">הפניה נשלחה בהצלחה</h1>
     <p class="thank-you-text">תודה שפניתם. אורנית תחזור אליכם בהקדם, בדרך כלל בתוך 24 שעות.</p>
     <a href="/#contact-form" class="thank-you-link">חזרה לאתר</a>
   </main>
+  <footer class="site-footer thank-you-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/" class="footer-link">חזרה לאתר</a>
+        <a href="/accessibility.html" class="footer-link">הצהרת נגישות</a>
+        <a href="/privacy.html" class="footer-link">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
