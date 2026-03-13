@@ -972,10 +972,10 @@ button:focus-visible {
   }
 }
 
-/* WhatsApp: sit above sticky CTA on mobile so it isn't cut off */
+/* WhatsApp: sit just above sticky CTA on mobile – low on screen but not cut off */
 @media (max-width: 768px) {
   .whatsapp-float {
-    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
     right: 0.75rem;
   }
 }
