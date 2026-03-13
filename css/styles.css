@@ -7,9 +7,12 @@
   --blue-text: #0a5c54;
   --border: #e5e7eb;
   --shadow: 0 4px 14px rgba(0,0,0,.08);
+  --shadow-soft: 0 2px 20px rgba(0,0,0,.06);
   --radius: 8px;
+  --radius-lg: 14px;
   --bg-soft: #f0fdfa;
   --bg-subtle: #f9fafb;
+  --bg-body: #faf9f7;
 }
 
 *,
@@ -30,12 +33,14 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
-  background: #fff;
+  background: var(--bg-body);
   position: relative;
 }
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
+
+.main-wrap a:hover:not(.btn):not(.btn-hero):not(.util-link):not(.sticky-cta-link):not(.footer-link) { text-decoration: underline; }
 
 /* Skip link – visible on focus */
 .skip-link {
@@ -159,9 +164,10 @@ button:focus-visible {
 .hero {
   margin-bottom: 3rem;
   padding: 2.25rem 1.5rem;
-  background: linear-gradient(135deg, #f0fdfa 0%, #f5faf9 40%, #faf8f6 100%);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, #f0fdfa 0%, #f5faf9 35%, #faf8f5 70%, #faf9f7 100%);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
 }
 
 .hero-inner {
@@ -179,9 +185,10 @@ button:focus-visible {
 
 .hero-title {
   margin: 0 0 0.75rem;
-  font-size: 1.6rem;
+  font-family: 'Assistant', 'Heebo', sans-serif;
+  font-size: 1.65rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--text);
   text-align: right;
 }
@@ -209,6 +216,21 @@ button:focus-visible {
   text-align: right;
 }
 
+.hero-trust-item {
+  display: inline-block;
+}
+
+.hero-trust-item + .hero-trust-item {
+  margin-inline-start: 0.75rem;
+}
+
+.hero-trust-item::before {
+  content: '✓ ';
+  color: var(--blue);
+  font-weight: 700;
+  margin-inline-end: 0.2rem;
+}
+
 .hero-location {
   margin: 0 0 1.25rem;
   font-size: 0.9rem;
@@ -216,23 +238,28 @@ button:focus-visible {
   text-align: right;
 }
 
+.hero-location::before {
+  content: '📍 ';
+}
+
 .btn-hero {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.6rem;
+  min-height: 48px;
   font-size: 1rem;
   font-weight: 600;
   background: var(--blue);
   color: #fff;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
 }
 
 .btn-hero:hover {
   opacity: 0.95;
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+  box-shadow: 0 6px 16px rgba(11, 107, 98, 0.35);
 }
 
 .hero-photo {
@@ -311,7 +338,7 @@ button:focus-visible {
 /* About full section */
 .about-full {
   background: var(--bg-subtle);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 2rem 1.5rem;
   margin-bottom: 3rem;
   padding-top: 2.5rem;
@@ -355,7 +382,7 @@ button:focus-visible {
   border: 2px solid var(--border);
 }
 
-.about-full-content { flex: 1; min-width: 280px; }
+.about-full-content { flex: 1; min-width: 280px; max-width: 65ch; }
 
 .about-full-title {
   margin: 0 0 0.2rem;
@@ -379,7 +406,7 @@ button:focus-visible {
 .about-full-text p {
   margin: 0 0 1rem;
   text-align: right;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .about-full-text p:last-child { margin-bottom: 0; }
@@ -418,15 +445,15 @@ button:focus-visible {
   background: #fff;
   border: 1px solid var(--border);
   border-right: 3px solid var(--blue);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
   text-align: right;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .testimonial-card .testimonial-text::before {
@@ -494,14 +521,15 @@ button:focus-visible {
 .faq-item {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .faq-item:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .faq-question {
@@ -578,9 +606,9 @@ button:focus-visible {
   top: 6rem;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-soft);
 }
 
 .profile-name {
@@ -753,9 +781,9 @@ button:focus-visible {
 .form-column {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-soft);
 }
 
 .form-title {
@@ -797,6 +825,16 @@ button:focus-visible {
 }
 
 .contact-form { max-width: 100%; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; }
+}
 
 .form-group {
   margin-bottom: 1rem;
@@ -858,11 +896,17 @@ button:focus-visible {
 }
 
 /* Same-page thank-you (after form submit) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .form-success-message {
   max-width: 560px;
   margin: 2rem auto;
   padding: 2rem 1.25rem;
   text-align: center;
+  animation: fadeIn 0.4s ease;
 }
 .form-success-title {
   font-size: 1.5rem;
@@ -941,7 +985,7 @@ button:focus-visible {
 
 /* Footer */
 .site-footer {
-  background: #f3f4f6;
+  background: #f5f4f2;
   border-top: 1px solid var(--border);
   padding: 1.25rem 1.5rem;
 }

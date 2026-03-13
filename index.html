@@ -17,7 +17,7 @@
   <meta name="twitter:image" content="https://ornit.netlify.app/assets/profile.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@600;700&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -79,9 +79,9 @@
           <h1 class="hero-title">ליווי רגשי לילדים ונוער – עם כלים שמשאירים אתכם רגועים</h1>
           <p class="hero-subtitle">טיפול CBT ו-DBT מותאם גיל, בשיתוף ההורים. חרדות, ויסות רגשי, הכנה לגיוס ותמיכה במשפחה.</p>
           <p class="hero-value">מטפלת CBT/DBT מוסמכת מהאזור – טיפול ממוקד, בשיתוף ההורים.</p>
-          <p class="hero-trust">מטפלת מוסמכת · שיחת היכרות ללא התחייבות · מחזירה לפניות בתוך 24 שעות</p>
+          <p class="hero-trust"><span class="hero-trust-item">מטפלת מוסמכת</span> <span class="hero-trust-item">שיחת היכרות ללא התחייבות</span> <span class="hero-trust-item">מחזירה לפניות בתוך 24 שעות</span></p>
           <p class="hero-location">מקבלת בראשון לציון (נוח גם מרחובות ונס ציונה)</p>
-          <a href="#contact-form" class="btn-hero">לשיחת היכרות – צרו קשר</a>
+          <a href="#contact-form" class="btn-hero"><span aria-hidden="true">📞</span> לשיחת היכרות – צרו קשר</a>
         </div>
       </div>
     </section>
@@ -223,13 +223,15 @@
           </p>
           <input type="hidden" name="form-time" id="form-time" value="">
           <p id="form-error" class="form-error-message" hidden aria-live="polite"></p>
-          <div class="form-group">
-            <label for="fname">שם</label>
-            <input type="text" id="fname" name="name" required maxlength="200">
-          </div>
-          <div class="form-group">
-            <label for="fphone">מספר טלפון</label>
-            <input type="tel" id="fphone" name="phone" required maxlength="30">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">שם</label>
+              <input type="text" id="fname" name="name" required maxlength="200">
+            </div>
+            <div class="form-group">
+              <label for="fphone">מספר טלפון</label>
+              <input type="tel" id="fphone" name="phone" required maxlength="30">
+            </div>
           </div>
           <div class="form-group">
             <label for="femail">כתובת אימייל</label>
