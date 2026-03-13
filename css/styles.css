@@ -1107,6 +1107,39 @@ button:focus-visible {
   .header-inner {
     position: relative;
   }
+
+  /* Reduce horizontal padding on mobile so content uses more width */
+  .main-wrap {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-full {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .testimonials {
+    padding-inline: 0.75rem;
+  }
+
+  .faq {
+    padding-inline: 0.75rem;
+  }
+
+  .content-columns {
+    padding-inline: 0.75rem;
+  }
+
+  .profile-column,
+  .form-column {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1114,4 +1147,32 @@ button:focus-visible {
   .about-full-inner { flex-direction: column; align-items: center; }
   .about-full-img { transform: none; }
   .about-full-content { text-align: right; }
+}
+
+@media (max-width: 480px) {
+  .main-wrap {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .hero {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .about-full {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .testimonials {
+    padding-inline: 0.5rem;
+  }
+  .faq {
+    padding-inline: 0.5rem;
+  }
+  .content-columns {
+    padding-inline: 0.5rem;
+  }
+  .profile-column,
+  .form-column {
+    padding: 0.75rem;
+  }
 }
